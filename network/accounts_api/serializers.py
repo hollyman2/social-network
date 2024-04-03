@@ -44,4 +44,4 @@ class ApiKeySerializer(serializers.ModelSerializer):
         )
     def create(self, user):
        
-        return ApiKeySerializer(ApiKey.objects.create(key=secrets.token_urlsafe(30), user=user))
+        return ApiKeySerializer(ApiKey.objects.create(key=secrets.token_urlsafe(200), user=user))
