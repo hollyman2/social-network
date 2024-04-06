@@ -16,6 +16,7 @@ from posts_api.models import Report
 from . import serializers
 from posts_api.serializers import ReportSerializer
 from django.conf import settings
+from .tasks import send_mail_task
 
 User = get_user_model()
 
@@ -45,7 +46,7 @@ class SignUpAPIView(APIView):
         from_email = settings.EMAIL_HOST_USER
         recipient_list = [user.email]
 
-        send_mail(subject, message, from_email, recipient_list)
+        send_mail_task(subject, message, from_email, recipient_list)
 
 
         user.is_active = True
