@@ -357,7 +357,6 @@ class ReportAnswerView(APIView):
         author = request.user
         answer = get_object_or_404(ReplyComment, id=answerid)
         answer_serializer = serializers.AnswerSerializer(answer)  
-        print('rge')
         try:
             report = get_object_or_404(Report, answer=answer, author=author)
             return Response(
